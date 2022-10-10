@@ -1,0 +1,5 @@
+kaleido
+numpy
+pandas
+plotly
+psaw
