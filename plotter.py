@@ -557,7 +557,7 @@ def plot_donut():
         font_size=18,
         title_text="Distribution of submissions in r/Python during 2021 by day of the week (UTC)",
         title_x=0.5,
-        title_y=0.965,
+        title_y=0.95,
         margin_t=100,
         margin_l=40,
         margin_r=40,
@@ -591,7 +591,7 @@ def plot_donut():
 
 if __name__ == "__main__":
 
-    # plot_calendar()
-    # plot_radar()
-    # plot_bars()
+    plot_calendar()
+    plot_radar()
+    plot_bars()
     plot_donut()
