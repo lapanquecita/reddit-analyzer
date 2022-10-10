@@ -2,7 +2,7 @@
 
 This repository contains a couple of scripts that will help you download Reddit data from public subreddits you are interested in.
 
-The first step is to configure `scrapper.py` with the target subreddit and the year.
+The first step is to configure `scraper.py` with the target subreddit and the year.
 
 *Note: You can download data from a larger time span if you wish. You will only need to manually adjust the epochs.*
 
