@@ -12,7 +12,7 @@ The next step is to configure `plotter.py` with your CSV file name and the year 
 
 All plots are fully documented, you can see them below.
 
-## Distribution by day of the year
+## Distribution by date
 
 ![Image 1](./1.png)
 
