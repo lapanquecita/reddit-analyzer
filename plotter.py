@@ -9,20 +9,37 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.colors import qualitative
 from plotly.subplots import make_subplots
+import argparse
+from datetime import datetime
 
 
-def plot_calendar():
+x = datetime.now()
+
+#argparse object creation
+arg=argparse.ArgumentParser(description="plots subreddits data")
+arg.add_argument("-r", "--r",
+                type = str,
+                default = "Python",
+                help = " takes in name of the subreddit")
+arg.add_argument("-yr", "--yr",
+                type = int,
+                default = x.year,
+                help = " takes in required Year")
+args=arg.parse_args()
+
+
+def plot_calendar(args):
     """
     This function will create a calendar plot, very similar to
     the one seen in GitHub profiles.
     """
 
     # This plot needs to know the year so it can configure itself.
-    year = 2021
+    year = args.yr
 
     # We read our CSV file and make the isodate column our index.
     df = pd.read_csv(
-        "./Python-2021.csv",
+        f"./{args.r}-{year}.csv",
         parse_dates=["isodate"],
         index_col="isodate"
     )
@@ -210,7 +227,7 @@ def plot_calendar():
         font_family="Jura",
         font_color="#FFFFFF",
         font_size=20,
-        title_text=f"Distribution of submissions in r/Python during {year} by date (UTC)",
+        title_text=f"Distribution of submissions in r/{args.r} during {year} by date (UTC)",
         title_x=0.5,
         title_y=0.93,
         margin_t=120,
@@ -254,7 +271,7 @@ def plot_calendar():
     fig.write_image("./1.png")
 
 
-def plot_radar():
+def plot_radar(args):
     """
     This function creates a radar chart that shows the distribution
     by hour of the day.
@@ -262,7 +279,7 @@ def plot_radar():
 
     # We read our CSV file and make the isodate column our index.
     df = pd.read_csv(
-        "./Python-2021.csv",
+        f"./{args.r}-{args.yr}.csv",
         parse_dates=["isodate"],
         index_col="isodate"
     )
@@ -337,7 +354,7 @@ def plot_radar():
         font_family="Jura",
         font_color="#FFFFFF",
         font_size=16,
-        title_text="Distribution of submissions in r/Python during 2021 by hour (UTC)",
+        title_text=f"Distribution of submissions in r/{args.r} during {args.yr} by hour (UTC)",
         title_x=0.5,
         title_y=0.96,
         margin_t=120,
@@ -370,14 +387,14 @@ def plot_radar():
     fig.write_image(f"./2.png")
 
 
-def plot_bars():
+def plot_bars(args):
     """
     This function creates a simple vertical bar chart with the distribution by month.
     """
 
     # We read our CSV file and make the isodate column our index.
     df = pd.read_csv(
-        "./Python-2021.csv",
+        f"./{args.r}-{args.yr}.csv",
         parse_dates=["isodate"],
         index_col="isodate"
     )
@@ -455,7 +472,7 @@ def plot_bars():
         font_family="Jura",
         font_color="white",
         font_size=18,
-        title_text="Distribution of submissions in r/Python during 2021 by month (UTC)",
+        title_text=f"Distribution of submissions in r/{args.r} during {args.yr} by month (UTC)",
         title_x=0.5,
         title_y=0.965,
         margin_t=60,
@@ -489,7 +506,7 @@ def plot_bars():
     fig.write_image("./3.png")
 
 
-def plot_donut():
+def plot_donut(args):
     """
     This function creates a donut plot with a gauge effect
     # that shows the distribution by day of the week.
@@ -497,7 +514,7 @@ def plot_donut():
 
     # We read our CSV file and make the isodate column our index.
     df = pd.read_csv(
-        "./Python-2021.csv",
+        f"./{args.r}-{args.yr}.csv",
         parse_dates=["isodate"],
         index_col="isodate"
     )
@@ -555,7 +572,7 @@ def plot_donut():
         font_family="Jura",
         font_color="white",
         font_size=18,
-        title_text="Distribution of submissions in r/Python during 2021 by day of the week (UTC)",
+        title_text=f"Distribution of submissions in r/{args.r} during {args.yr} by day of the week (UTC)",
         title_x=0.5,
         title_y=0.95,
         margin_t=100,
@@ -591,7 +608,7 @@ def plot_donut():
 
 if __name__ == "__main__":
 
-    plot_calendar()
-    plot_radar()
-    plot_bars()
-    plot_donut()
+    plot_calendar(args)
+    plot_radar(args)
+    plot_bars(args)
+    plot_donut(args)
