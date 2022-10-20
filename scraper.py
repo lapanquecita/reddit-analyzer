@@ -25,13 +25,12 @@ args=arg.parse_args()
 
 #class variables
 SUBREDDIT = args.r
-YEAR = int(args.yr)
+YEAR = args.yr
 
 
 # These are used to restrict by the year we are interested in.
 START_EPOCH = int(datetime(YEAR, 1, 1).timestamp())
 END_EPOCH = int(datetime(YEAR, 12, 31).timestamp())
-
 
 def main():
 
