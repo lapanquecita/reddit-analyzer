@@ -2,19 +2,35 @@
 This script downloads all the posts from the specified subreddit and year.
 """
 
-from psaw import PushshiftAPI
+import argparse
 import csv
 from datetime import datetime
 
+from psaw import PushshiftAPI
 
-# YOu only need to modify these 2 constants.
-SUBREDDIT = "Python"
-YEAR = 2021
+#used it for parsing default year
+x = datetime.now()
+
+#argparse object creation
+arg=argparse.ArgumentParser(description="Collets subreddits data")
+arg.add_argument("-r", "--r",
+                type = str,
+                default = "Python",
+                help = " takes in name of the subreddit")
+arg.add_argument("-yr", "--yr",
+                type = int,
+                default = x.year,
+                help = " takes in required Year")
+args=arg.parse_args()
+
+#constant variables
+SUBREDDIT = args.r
+YEAR = args.yr
+
 
 # These are used to restrict by the year we are interested in.
 START_EPOCH = int(datetime(YEAR, 1, 1).timestamp())
 END_EPOCH = int(datetime(YEAR, 12, 31).timestamp())
-
 
 def main():
 
