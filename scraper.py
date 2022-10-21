@@ -23,7 +23,7 @@ arg.add_argument("-yr", "--yr",
                 help = " takes in required Year")
 args=arg.parse_args()
 
-#class variables
+#constant variables
 SUBREDDIT = args.r
 YEAR = args.yr
 
