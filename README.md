@@ -1,4 +1,4 @@
-# ***Reddit Analyzer***
+# Reddit Analyzer
 
 This repository contains a couple of scripts that will help you download Reddit data from public subreddits you are interested in using PushShift API.
 
@@ -38,7 +38,7 @@ ____
 `All plots are fully documented, you can see them below.`
 ____
 
-## **Example using data colleted from r/python subreddit for the year 2021 :**
+## Example using data collected from r/python subreddit for the year 2021
 
 ***commands used :***
 
