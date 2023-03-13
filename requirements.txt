@@ -2,4 +2,4 @@ kaleido
 numpy
 pandas
 plotly
-psaw
+pmaw
