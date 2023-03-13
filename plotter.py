@@ -15,17 +15,17 @@ from datetime import datetime
 
 x = datetime.now()
 
-#argparse object creation
-arg=argparse.ArgumentParser(description="plots subreddits data")
+# argparse object creation
+arg = argparse.ArgumentParser(description="plots subreddits data")
 arg.add_argument("-r", "--r",
-                type = str,
-                default = "Python",
-                help = " takes in name of the subreddit")
+                 type=str,
+                 default="Python",
+                 help=" takes in name of the subreddit")
 arg.add_argument("-yr", "--yr",
-                type = int,
-                default = x.year,
-                help = " takes in required Year")
-args=arg.parse_args()
+                 type=int,
+                 default=x.year,
+                 help=" takes in required Year")
+args = arg.parse_args()
 
 
 def plot_calendar(args):
@@ -470,7 +470,7 @@ def plot_bars(args):
         width=1280,
         height=720,
         font_family="Jura",
-        font_color="white",
+        font_color="#FFFFFF",
         font_size=18,
         title_text=f"Distribution of submissions in r/{args.r} during {args.yr} by month (UTC)",
         title_x=0.5,
@@ -553,11 +553,13 @@ def plot_donut(args):
             values=final["total"],
             text=final["perc"],
             texttemplate="%{text:.2f}%",
+            automargin=False,
             hole=0.75,
             textposition="outside",
             marker_line_color="#04293A",
             marker_line_width=15,
-        ))
+        )
+    )
 
     fig.update_layout(
         showlegend=True,
@@ -570,7 +572,7 @@ def plot_donut(args):
         width=1280,
         height=720,
         font_family="Jura",
-        font_color="white",
+        font_color="#FFFFFF",
         font_size=18,
         title_text=f"Distribution of submissions in r/{args.r} during {args.yr} by day of the week (UTC)",
         title_x=0.5,
